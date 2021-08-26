@@ -68,25 +68,7 @@
 
 복수의 트랜잭션을 사용하다보면 교착상태가 일어날수 있다. 교착상태란 두 개 이상의 트랜잭션이 특정 자원(테이블 또는 행)의 잠금(Lock)을 획득한 채 다른 트랜잭션이 소유하고 있는 잠금을 요구하면 아무리 기다려도 상황이 바뀌지 않는 상태가 되는데, 이를 `교착상태`라고 한다.
 
-### **교착상태의 예(MySQL)**
 
-MySQL [MVCC](https://en.wikipedia.org/wiki/Multiversion_concurrency_control)에 따른 특성 때문에 트랜잭션에서 갱신 연산(Insert, Update, Delete)를 실행하면 잠금을 획득한다. (기본은 행에 대한 잠금)
-
-![https://github.com/JaeYeopHan/Interview_Question_for_Beginner/raw/master/Database/images/deadlock.png](https://github.com/JaeYeopHan/Interview_Question_for_Beginner/raw/master/Database/images/deadlock.png)
-
-트랜잭션 1이 테이블 B의 첫번째 행의 잠금을 얻고 트랜잭션 2도 테이블 A의 첫번째 행의 잠금을 얻었다고 하자.
-
-`Transaction 1> create table B (i1 int not null primary key) engine = innodb;
-Transaction 2> create table A (i1 int not null primary key) engine = innodb;
-
-Transaction 1> start transaction; insert into B values(1);
-Transaction 2> start transaction; insert into A values(1);`
-
-트랜잭션을 commit 하지 않은채 서로의 첫번째 행에 대한 잠금을 요청하면
-
-`Transaction 1> insert into A values(1); Transaction 2> insert into B values(1); ERROR 1213 (40001): Deadlock found when trying to get lock; try restarting transaction`
-
-Deadlock 이 발생한다. 일반적인 DBMS는 교착상태를 독자적으로 검출해 보고한다.
 
 ### **교착 상태의 빈도를 낮추는 방법**
 
