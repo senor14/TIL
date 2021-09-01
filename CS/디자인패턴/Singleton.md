@@ -65,7 +65,17 @@ public class Singleton {
 
 `DCL(Double Checking Locking)`을 써서 `getInstance()`에서 **동기화 되는 영역을 줄일 수 있다.** 초기에 객체를 생성하지 않으면서도 동기화하는 부분을 작게 만들었다. 그러나 이 코드는 **멀티코어 환경에서 동작할 때,** 하나의 CPU 를 제외하고는 다른 CPU 가 lock 이 걸리게 된다. 그렇기 때문에 다른 방법이 필요하다.
 
+```java
+public class Singleton {
+    private static volatile Singleton singletonObject = new Singleton();
 
+    private Singleton() {}
+
+    public static Singleton getSingletonObject() {
+        return singletonObject;
+    }
+}
+```
 
 클래스가 로딩되는 시점에 미리 객체를 생성해두고 그 객체를 반환한다.
 
