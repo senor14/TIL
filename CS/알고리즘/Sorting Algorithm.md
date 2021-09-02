@@ -60,9 +60,6 @@ Sorting 기법 중 가장 빠르다고 해서 quick 이라는 이름이 붙여�
 
 그렇다면 어떤 경우가 Worst Case 일까? Quick Sort 로 오름차순 정렬을 한다고 하자. 그렇다면 Worst Case 는 partition 과정에서 pivot value 가 항상 배열 내에서 가장 작은 값 또는 가장 큰 값으로 설정되었을 때이다. 매 partition 마다 `unbalanced partition`이 이뤄지고 이렇게 partition 이 되면 비교 횟수는 원소 n 개에 대해서 n 번, (n-1)번, (n-2)번 … 이 되므로 시간 복잡도는 **O(n^2)** 이 된다.
 
-### **Balanced-partitioning**
-
-자연스럽게 Best-Case 는 두 개의 sub-problems 의 크기가 동일한 경우가 된다. 즉 partition 과정에서 반반씩 나뉘게 되는 경우인 것이다. 그렇다면 Partition 과정에서 pivot 을 어떻게 정할 것인가가 중요해진다. 어떻게 정하면 정확히 반반의 partition 이 아니더라도 balanced-partitioning 즉, 균형 잡힌 분할을 할 수 있을까? 배열의 맨 뒤 또는 맨 앞에 있는 원소로 설정하는가? Random 으로 설정하는 것은 어떨까? 특정 위치의 원소를 pivot 으로 설정하지 않고 배열 내의 원소 중 임의의 원소를 pivot 으로 설정하면 입력에 관계없이 일정한 수준의 성능을 얻을 수 있다. 또 악의적인 입력에 대해 성능 저하를 막을 수 있다.
 
 ### **Partitioning**
 
