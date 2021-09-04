@@ -61,9 +61,7 @@ Sorting 기법 중 가장 빠르다고 해서 quick 이라는 이름이 붙여�
 그렇다면 어떤 경우가 Worst Case 일까? Quick Sort 로 오름차순 정렬을 한다고 하자. 그렇다면 Worst Case 는 partition 과정에서 pivot value 가 항상 배열 내에서 가장 작은 값 또는 가장 큰 값으로 설정되었을 때이다. 매 partition 마다 `unbalanced partition`이 이뤄지고 이렇게 partition 이 되면 비교 횟수는 원소 n 개에 대해서 n 번, (n-1)번, (n-2)번 … 이 되므로 시간 복잡도는 **O(n^2)** 이 된다.
 
 
-### **Partitioning**
 
-정작 중요한 Partition 은 어떻게 이루어지는가에 대한 이야기를 하지 않았다. 가장 마지막 원소를 pivot 으로 설정했다고 가정하자. 이 pivot 의 값을 기준으로 좌측에는 작은 값 우측에는 큰 값이 오도록 해야 하는데, 일단 pivot 은 움직이지 말자. 첫번째 원소부터 비교하는데 만약 그 값이 pivot 보다 작다면 그대로 두고 크다면 맨 마지막에서 그 앞의 원소와 자리를 바꿔준다. 즉 pivot value 의 index 가 k 라면 k-1 번째와 바꿔주는 것이다. 이 모든 원소에 대해 실행하고 마지막 과정에서 작은 값들이 채워지는 인덱스를 가리키고 있는 값에 1 을 더한 index 값과 pivot 값을 바꿔준다. 즉, 최종적으로 결정될 pivot 의 인덱스를 i 라고 했을 때, 0 부터 i-1 까지는 pivot 보다 작은 값이 될 것이고 i+1 부터 k 까지는 pivot 값보다 큰 값이 될 것이다.
 
 [제목 없음](https://www.notion.so/30a9a1d8f8f04b45b9bfcea887fd7094)
 
